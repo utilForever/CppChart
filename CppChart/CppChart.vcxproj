@@ -120,6 +120,11 @@
   <ItemGroup>
     <ClCompile Include="ChartTest.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Chart.h" />
+    <ClInclude Include="DataFormat.h" />
+    <ClInclude Include="GraphLegend.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

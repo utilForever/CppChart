@@ -24,6 +24,10 @@ Various chart creation library using Modern C++.
   * Bubble chart
 * Code refactoring - No warning messages at warning level 4.
 
+#### Part 3
+
+* Using OpenGL or DirectX to represent 3D chart (and remove dependency on SFML).
+
 ### Doing
 
 #### Part 1

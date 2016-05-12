@@ -36,8 +36,6 @@ Various chart creation library using Modern C++.
 
 None
 
-#### Part 1
-
 ## Screenshots
 
 Coming soon!

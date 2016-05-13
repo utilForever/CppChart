@@ -13,6 +13,19 @@ namespace CppChart
 		std::string name;
 		sf::Color color;
 	};
+
+	struct DataElement : public DataFormat
+	{
+		DataElement(const std::string& _name, const sf::Color& _color, float _value) :
+			DataFormat(_name, _color), value(_value) { }
+
+		bool operator<(const DataElement& e) const
+		{
+			return value < e.value;
+		}
+
+		float value;
+	};
 }
 
 #endif

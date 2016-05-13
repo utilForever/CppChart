@@ -119,6 +119,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ChartTest.cpp" />
+    <ClCompile Include="ChartUtil.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Chart.h" />

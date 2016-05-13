@@ -122,6 +122,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Chart.h" />
+    <ClInclude Include="ChartUtil.h" />
     <ClInclude Include="DataFormat.h" />
     <ClInclude Include="GraphLegend.h" />
   </ItemGroup>

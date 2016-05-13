@@ -40,6 +40,20 @@ namespace CppChart
 		float x, y;
 		float value;
 	};
+
+	struct Triplet : public DataFormat
+	{
+		Triplet(const std::string _name, const sf::Color& _color, float _x, float _y, float _value) :
+			DataFormat(_name, _color), x(_x), y(_y), value(_value) { }
+
+		bool operator<(const Triplet& e) const
+		{
+			return value < e.value;
+		}
+
+		float x, y;
+		float value;
+	};
 }
 
 #endif

@@ -26,6 +26,17 @@ namespace CppChart
 
 		float value;
 	};
+
+	struct RangedDataElement : public DataFormat
+	{
+		bool operator<(const RangedDataElement& e) const
+		{
+			return value < e.value;
+		}
+
+		float x, y;
+		float value;
+	};
 }
 
 #endif

@@ -1,7 +1,7 @@
 #ifndef DATA_FORMAT_H
 #define DATA_FORMAT_H
 
-#include "SFML/Graphics.hpp"
+#include "Graphics.h"
 
 namespace CppChart
 {

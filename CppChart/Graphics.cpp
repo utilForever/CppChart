@@ -77,4 +77,16 @@ namespace CppChart
 
 		LogFnEnd();
 	}
+
+	void SetTextAtCenter(sf::Text& text, float x, float y, float w, float h)
+	{
+		LogFnStart();
+
+		float offsetX = (w - text.getLocalBounds().width) / 2.0f;
+		float offsetY = (h - text.getLocalBounds().height) / 2.0f;
+
+		text.setPosition(sf::Vector2f(x + offsetX, y + offsetY));
+
+		LogFnEnd();
+	}
 }

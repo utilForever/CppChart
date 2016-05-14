@@ -72,6 +72,26 @@ namespace CppChart
 		sf::Color m_fillColor;
 		unsigned int m_points;
 	};
+
+	class TriangleShape : public sf::Shape
+	{
+	public:
+		TriangleShape(const sf::Vector2f v1, const sf::Vector2f v2, const sf::Vector2f v3) :
+			m_vertex(v1, v2, v3) { }
+
+		virtual unsigned int GetPointCount() const
+		{
+			return 3u;
+		}
+
+		virtual sf::Vector2f GetPoint(unsigned int index) const
+		{
+			return m_vertex[index];
+		}
+
+	private:
+		sf::Vector2f m_vertex[3];
+	};
 }
 
 #endif

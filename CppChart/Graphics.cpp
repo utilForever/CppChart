@@ -125,4 +125,28 @@ namespace CppChart
 
 		LogFnEnd();
 	}
+
+	void SectorShape::Update(float temp)
+	{
+		LogFnStart();
+
+		float incr = m_angle / static_cast<float>(m_points - 2u);
+		float x, y;
+
+		m_pie[0].position = m_center;
+		m_pie[0].color = m_fillColor;
+
+		for (size_t i = 1; i < m_points; ++i)
+		{
+			x = m_radius * cos(A2R * temp);
+			y = m_radius * sin(A2R * temp);
+			
+			m_pie[i].position = sf::Vector2f(x, y) + m_center;
+			m_pie[i].color = m_fillColor;
+
+			temp += incr;
+		}
+
+		LogFnEnd();
+	}
 }

@@ -89,4 +89,17 @@ namespace CppChart
 
 		LogFnEnd();
 	}
+
+	sf::CircleShape PlotPoint(float x, float y, float r, const sf::Color& color)
+	{
+		LogFnStart();
+
+		sf::CircleShape cs(r);
+		cs.setPosition(sf::Vector2f(x, y));
+		cs.setFillColor(color);
+
+		LogFnEnd();
+
+		return cs;
+	}
 }

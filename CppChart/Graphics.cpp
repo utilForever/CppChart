@@ -115,4 +115,14 @@ namespace CppChart
 
 		LogFnEnd();
 	}
+
+	void SectorShape::Draw(sf::RenderTarget& target, sf::RenderStates states) const
+	{
+		LogFnStart();
+
+		states.transform *= getTransform();
+		target.draw(m_pie, states);
+
+		LogFnEnd();
+	}
 }

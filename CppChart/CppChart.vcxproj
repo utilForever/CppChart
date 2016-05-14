@@ -126,6 +126,7 @@
     <ClInclude Include="Chart.h" />
     <ClInclude Include="ChartUtil.h" />
     <ClInclude Include="DataFormat.h" />
+    <ClInclude Include="Graphics.h" />
     <ClInclude Include="GraphLegend.h" />
     <ClInclude Include="Log.h" />
   </ItemGroup>

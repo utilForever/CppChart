@@ -1,8 +1,6 @@
 #ifndef GRAPHICS_H
 #define GRAPHICS_H
 
-#include <cmath>
-
 #include "SFML/Graphics.hpp"
 #include "Log.h"
 
@@ -38,7 +36,12 @@ namespace CppChart
 	class SectorShape : public sf::Transformable, public sf::Drawable
 	{
 	public:
-		SectorShape() { }
+		SectorShape() :
+			m_radius(0.0f), m_angle(0.0f), m_points(0)
+		{
+			
+		}
+
 		SectorShape(float, float, const sf::Vector2f& = sf::Vector2f(0.0f, 0.0f));
 
 		void SetCenter(const sf::Vector2f& c)

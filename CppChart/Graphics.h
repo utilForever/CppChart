@@ -77,7 +77,7 @@ namespace CppChart
 	{
 	public:
 		TriangleShape(const sf::Vector2f v1, const sf::Vector2f v2, const sf::Vector2f v3) :
-			m_vertex(v1, v2, v3) { }
+			m_vertex{ v1, v2, v3 } { }
 
 		virtual unsigned int GetPointCount() const
 		{

@@ -19,7 +19,8 @@ namespace CppChart
 	enum class Shape
 	{
 		RECTANGULAR,
-		CIRCULAR
+		CIRCULAR,
+		UNKNOWN
 	};
 
 	enum class Orientation

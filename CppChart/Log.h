@@ -2,7 +2,6 @@
 #define LOG_H
 
 #include <string>
-#include <sstream>
 #include <iostream>
 #include <SFML/Graphics.hpp>
 

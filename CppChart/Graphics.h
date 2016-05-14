@@ -65,9 +65,9 @@ namespace CppChart
 	private:
 		void Update(float = 0.0f);
 
-		sf::Vector2f m_center;
 		float m_radius;
 		float m_angle;
+		sf::Vector2f m_center;
 		sf::VertexArray m_pie;
 		sf::Color m_fillColor;
 		unsigned int m_points;

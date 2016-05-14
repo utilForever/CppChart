@@ -102,4 +102,17 @@ namespace CppChart
 
 		return cs;
 	}
+
+	SectorShape::SectorShape(float r, float a, const sf::Vector2f& c) :
+		m_radius(r), m_angle(a), m_center(c)
+	{
+		LogFnStart();
+
+		m_points = 2u + static_cast<unsigned int>(0.05f * m_radius * m_angle);
+		m_pie = sf::VertexArray(sf::TrianglesFan, m_points);
+
+		Update();
+
+		LogFnEnd();
+	}
 }

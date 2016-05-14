@@ -120,6 +120,7 @@
   <ItemGroup>
     <ClCompile Include="ChartTest.cpp" />
     <ClCompile Include="ChartUtil.cpp" />
+    <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="Log.cpp" />
   </ItemGroup>
   <ItemGroup>

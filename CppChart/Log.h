@@ -26,4 +26,14 @@ inline void NestedLog(std::string str)
 	std::cout << "\n\t" << str << "\n" << std::endl;
 }
 
+namespace CppChart
+{
+	std::ostream& operator<<(std::ostream& stream, const sf::Vector2f& v);
+	std::ostream& operator<<(std::ostream& stream, const sf::Vector2u& v);
+	std::ostream& operator<<(std::ostream& stream, const sf::Color& c);
+
+	template <typename T>
+	std::string ToString(const T& val);
+}
+
 #endif

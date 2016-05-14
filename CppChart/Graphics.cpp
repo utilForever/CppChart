@@ -29,4 +29,52 @@ namespace CppChart
 
 		return plot;
 	}
+
+	void DrawDottedLine(sf::RenderTarget* window, const sf::Vector2f& start, const sf::Vector2f& end, const sf::Color& color, float gap, float thickness)
+	{
+		LogFnStart();
+
+		float dist = sqrt((start.x - end.x) * (start.x - end.x) + (start.y - end.y) * (start.y - end.y));
+		float covered, ratio;
+		float x, y;
+		int totalSegments = dist / gap;
+		bool draw = true;
+		sf::Vector2f first = start, second;
+	
+		covered = gap;
+
+		for (int i = 0; i < totalSegments; ++i)
+		{
+			if (draw)
+			{
+				ratio = covered / dist;
+				x = start.x * (1.0f - ratio) + end.x * ratio;
+				y = start.y * (1.0f - ratio) + end.y * ratio;
+				second = sf::Vector2f(x, y);
+
+				sf::RectangleShape rect = MakeRect(first, second, thickness);
+				rect.setFillColor(color);
+				window->draw(rect);
+			}
+			else
+			{
+				ratio = covered / dist;
+				x = start.x * (1.0f - ratio) + end.x * ratio;
+				y = start.y * (1.0f - ratio) + end.y * ratio;
+				first = sf::Vector2f(x, y);
+			}
+
+			draw = !draw;
+			covered += gap;
+		}
+
+		if ((totalSegments % 2 == 0) && ((dist / gap) > static_cast<float>(totalSegments)))
+		{
+			sf::RectangleShape rect = MakeRect(first, end, thickness);
+			rect.setFillColor(color);
+			window->draw(rect);
+		}
+
+		LogFnEnd();
+	}
 }

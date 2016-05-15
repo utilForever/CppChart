@@ -13,7 +13,8 @@ namespace CppChart
 		LEFT,
 		RIGHT,
 		TOP,
-		BOTTOM
+		BOTTOM,
+		UNKNOWN
 	};
 
 	enum class Shape
@@ -26,7 +27,8 @@ namespace CppChart
 	enum class Orientation
 	{
 		HORIZONTAL,
-		VERTICAL
+		VERTICAL,
+		UNKNOWN
 	};
 
 	sf::RectangleShape MakeRect(sf::Vector2f, sf::Vector2f, float = 1.0f);

@@ -113,4 +113,22 @@ namespace CppChart
 
 		LogFnEnd();
 	}
+
+	inline unsigned GraphLegend::GetLongestName() const
+	{
+		LogFnStart();
+
+		unsigned int size = 0u;
+		for (auto& e : m_legend)
+		{
+			if (size < e.GetString().size())
+			{
+				size = e.GetString().size();
+			}
+		}
+
+		LogFnEnd();
+
+		return size;
+	}
 }

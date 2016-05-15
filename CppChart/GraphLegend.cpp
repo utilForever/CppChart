@@ -21,4 +21,26 @@ namespace CppChart
 
 		LogFnEnd();
 	}
+
+	void GraphLegendUnit::SetRectangleShape(float x, float y, const sf::Color& c)
+	{
+		LogFnStart();
+
+		m_shape = new sf::RectangleShape(sf::Vector2f(x, y));
+		m_shape->setFillColor(c);
+		m_shapeType = Shape::RECTANGULAR;
+
+		LogFnEnd();
+	}
+
+	void GraphLegendUnit::SetCircleShape(float r, const sf::Color& c)
+	{
+		LogFnStart();
+
+		m_shape = new sf::CircleShape(r);
+		m_shape->setFillColor(c);
+		m_shapeType = Shape::CIRCULAR;
+
+		LogFnEnd();
+	}
 }

@@ -131,4 +131,47 @@ namespace CppChart
 
 		return size;
 	}
+
+	void GraphLegend::CreateLegendObjects()
+	{
+		LogFnStart();
+
+		auto longestName = (*std::max_element(m_legendData.begin(), m_legendData.end(),
+			[](const DataFormat& a, const DataFormat& b)
+		{
+			return a.name.size() < b.name.size();
+		})).name.size();
+
+		auto limit = m_legendData.size();
+
+		if (m_orientation == Orientation::VERTICAL)
+		{
+			m_shape.width = m_width / 3.0f;
+			m_shape.height = (m_height - 5.0f * (limit - 1)) / limit;
+			m_fontSize = (m_width - m_shape.width - 5.0f) / static_cast<float>(longestName);
+		}
+		else if (m_orientation == Orientation::HORIZONTAL)
+		{
+			m_shape.width = (m_width - 5.0f * (limit - 1)) / limit;
+			m_fontSize = m_height / 3.0f;
+			m_shape.height = m_height - m_fontSize - 5.0f;
+		}
+
+		for (int i = 0; i < limit; ++i)
+		{
+			auto& e = m_legendData[i];
+			m_legend.emplace_back(m_shape.width, m_shape.height, e.color, e.name);
+
+			if (m_textMatchesKeyColor)
+			{
+				m_legend[i].SetTextColor(e.color);
+			}
+			else
+			{
+				m_legend[i].SetTextColor(m_fontColor);
+			}
+		}
+
+		LogFnEnd();
+	}
 }

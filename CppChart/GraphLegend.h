@@ -54,9 +54,9 @@ namespace CppChart
 	{
 	public:
 		GraphLegend() :
-			orientation(Orientation::UNKNOWN), beforeText(true), textMatchesKeyColor(true), exists(true),
-			width(0), height(0), x(0), y(0), position(Position::UNKNOWN),
-			keyShape(Shape::UNKNOWN), bgColor(sf::Color::White), fontColor(sf::Color::Black), m_fontSize(0) { }
+			m_orientation(Orientation::UNKNOWN), m_beforeText(true), m_textMatchesKeyColor(true), m_exists(true),
+			m_width(0), m_height(0), m_x(0), m_y(0), m_position(Position::UNKNOWN),
+			m_keyShape(Shape::UNKNOWN), m_bgColor(sf::Color::White), m_fontColor(sf::Color::Black), m_fontSize(0) { }
 
 		void AddData(const std::vector<DataFormat>& d)
 		{
@@ -65,17 +65,17 @@ namespace CppChart
 
 		void Render();
 
-		Orientation orientation;
-		bool beforeText;
-		bool textMatchesKeyColor;
-		bool exists;
+		Orientation m_orientation;
+		bool m_beforeText;
+		bool m_textMatchesKeyColor;
+		bool m_exists;
 
-		float width, height;
-		float x, y;
-		Position position;
-		Shape keyShape;
-		sf::Font font;
-		sf::Color bgColor, fontColor;
+		float m_width, m_height;
+		float m_x, m_y;
+		Position m_position;
+		Shape m_keyShape;
+		sf::Font m_font;
+		sf::Color m_bgColor, m_fontColor;
 
 		union
 		{
@@ -86,7 +86,7 @@ namespace CppChart
 			};
 
 			float radius;
-		} shape;
+		} m_shape;
 
 		friend class Chart;
 

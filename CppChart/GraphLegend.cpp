@@ -83,6 +83,29 @@ namespace CppChart
 			}
 			break;
 		case Orientation::HORIZONTAL:
+			for (auto& e : m_legend)
+			{
+				ly = 0.0f;
+				e.m_text.setCharacterSize(m_fontSize);
+				e.m_text.setFont(m_font);
+
+				if (m_beforeText)
+				{
+					e.m_shape->setPosition(sf::Vector2f(lx, ly));
+					ly += m_shape.height;
+					SetTextAtCenter(e.m_text, lx, ly, m_shape.width, m_shape.height);
+				}
+				else
+				{
+					SetTextAtCenter(e.m_text, lx, ly, m_shape.width, m_shape.height);
+					ly += m_fontSize;
+					e.m_shape->setPosition(sf::Vector2f(lx, ly));
+				}
+
+				lx += m_shape.width + 5.0f;
+				m_texture.draw(e.m_text);
+				m_texture.draw(*e.m_shape);
+			}
 			break;
 		default:
 			throw std::exception("This is never allowed to happen.");

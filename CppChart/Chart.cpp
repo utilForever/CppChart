@@ -98,4 +98,52 @@ namespace CppChart
 
 		LogFnEnd();
 	}
+	
+	void Chart::CreateLegendMetrics()
+	{
+		LogFnStart();
+
+		m_legend.m_x = m_legend.m_y = 0.0f;
+
+		switch (m_legend.m_position)
+		{
+		case Position::LEFT:
+			m_legend.m_orientation = Orientation::VERTICAL;
+			m_legend.m_width = 0.2f * m_screenWidth;
+			m_legend.m_height = 0.75f * m_screenHeight;
+			m_legend.m_x = 0.0f;
+			m_legend.m_y = 0.125f * m_screenHeight;
+			m_screenMargins.left += m_legend.m_width;
+			break;
+		case Position::RIGHT:
+			m_legend.m_orientation = Orientation::VERTICAL;
+			m_legend.m_width = 0.2f * m_screenWidth;
+			m_legend.m_height = 0.75f * m_screenHeight;
+			m_legend.m_x = 0.8f * m_screenWidth;
+			m_legend.m_y = 0.125f * m_screenHeight;
+			m_screenMargins.right += m_legend.m_width;
+			break;
+		case Position::TOP:
+			m_legend.m_orientation = Orientation::HORIZONTAL;
+			m_legend.m_width = 0.75f * m_screenWidth;
+			m_legend.m_height = 0.2f * m_screenHeight;
+			m_legend.m_x = 0.125f * m_screenWidth;
+			m_screenMargins.top += m_legend.m_height;
+			break;
+		case Position::BOTTOM:
+			m_legend.m_orientation = Orientation::HORIZONTAL;
+			m_legend.m_width = 0.5f * m_screenWidth;
+			m_legend.m_height = 0.2f * m_screenHeight;
+			m_legend.m_x = 0.25f * m_screenWidth;
+			m_legend.m_y = 0.8f * m_screenHeight;
+			m_screenMargins.bottom += m_legend.m_height;
+			break;
+		default:
+			throw std::exception("This is never allowed to happen.");
+		}
+
+		m_legend.m_keyShape = Shape::RECTANGULAR;
+
+		LogFnEnd();
+	}
 }

@@ -10,6 +10,12 @@ Various chart creation library using Modern C++.
 
 ### To-do
 
+#### Part 4
+
+* Using OpenGL or DirectX to represent 3D chart (and remove dependency on SFML).
+
+### Doing
+
 #### Part 3
 
 * Implement various chart classes.
@@ -22,13 +28,14 @@ Various chart creation library using Modern C++.
   * Radar graph
   * Column graph
   * Bubble chart
-* Code refactoring - No warning messages at warning level 4.
 
-#### Part 4
+### Done
 
-* Using OpenGL or DirectX to represent 3D chart (and remove dependency on SFML).
+#### Part 1
 
-### Doing
+* Configure solution and project settings.
+* Add 3rd party library (SFML).
+* Configure static and dynamic linking.
 
 #### Part 2
 
@@ -39,14 +46,6 @@ Various chart creation library using Modern C++.
   * Graphics
   * GraphLegend
   * Log
-
-### Done
-
-#### Part 1
-
-* Configure solution and project settings.
-* Add 3rd party library (SFML).
-* Configure static and dynamic linking.
 
 ## Screenshots
 

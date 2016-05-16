@@ -32,4 +32,17 @@ namespace CppChart
 
 		LogFnEnd();
 	}
+
+	void Chart::DrawToScreen(sf::RenderWindow* window)
+	{
+		LogFnStart();
+
+		CreateTexture();
+		LoadFonts();
+		Render();
+		DrawTextElements();
+		CopyToScreen(window);
+
+		LogFnEnd();
+	}
 }

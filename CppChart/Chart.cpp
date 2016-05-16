@@ -45,4 +45,36 @@ namespace CppChart
 
 		LogFnEnd();
 	}
+
+	void Chart::CopyToScreen(sf::RenderWindow* window)
+	{
+		LogFnStart();
+
+		// Background Screen Texture
+		sf::Sprite bSprite;
+		m_screenTexture.setSmooth(true);
+		m_screenTexture.display();
+		bSprite.setTexture(m_screenTexture.getTexture());
+		window->draw(bSprite);
+
+		// Foreground Chart Texture (Adjust for margins)
+		sf::Sprite cSprite;
+		m_chartTexture.display();
+		m_chartTexture.setSmooth(true);
+		cSprite.setTexture(m_chartTexture.getTexture());
+		cSprite.move(sf::Vector2f(m_screenMargins.left, m_screenMargins.top));
+		window->draw(cSprite);
+
+		// Legend Drawing
+		if (m_legend.m_exists)
+		{
+			sf::Sprite lSprite;
+			m_legend.Render();
+			lSprite.setTexture(m_legend.m_texture.getTexture());
+			lSprite.move(sf::Vector2f(m_legend.m_x, m_legend.m_y));
+			window->draw(lSprite);
+		}
+
+		LogFnEnd();
+	}
 }

@@ -77,4 +77,25 @@ namespace CppChart
 
 		LogFnEnd();
 	}
+
+	void Chart::CreateTexture()
+	{
+		LogFnStart();
+
+		if (m_legend.m_exists)
+		{
+			CreateLegendMetrics();
+		}
+
+		m_chartWidth = m_screenWidth - m_screenMargins.left - m_screenMargins.right;
+		m_chartHeight = m_screenHeight - m_screenMargins.top - m_screenMargins.bottom;
+
+		m_chartTexture.create(m_chartWidth, m_chartHeight);
+		m_chartTexture.clear(m_chartBgColor);
+
+		m_screenTexture.create(m_screenWidth, m_screenHeight);
+		m_screenTexture.clear(m_screenBgColor);
+
+		LogFnEnd();
+	}
 }

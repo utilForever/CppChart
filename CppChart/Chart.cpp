@@ -27,8 +27,10 @@ namespace CppChart
 	{
 		LogFnStart();
 
-		m_axes.labels.font.loadFromFile("NotoSans.ttf");
-		m_legend.m_font.loadFromFile("NotoSans.ttf");
+		for (auto& e : m_textElements)
+		{
+			m_screenTexture.draw(e);
+		}
 
 		LogFnEnd();
 	}
@@ -143,6 +145,16 @@ namespace CppChart
 		}
 
 		m_legend.m_keyShape = Shape::RECTANGULAR;
+
+		LogFnEnd();
+	}
+
+	void Chart::LoadFonts()
+	{
+		LogFnStart();
+
+		m_axes.labels.font.loadFromFile("NotoSans.ttf");
+		m_legend.m_font.loadFromFile("NotoSans.ttf");
 
 		LogFnEnd();
 	}

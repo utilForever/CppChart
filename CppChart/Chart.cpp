@@ -22,4 +22,14 @@ namespace CppChart
 
 		LogFnEnd();
 	}
+
+	void Chart::DrawTextElements()
+	{
+		LogFnStart();
+
+		m_axes.labels.font.loadFromFile("NotoSans.ttf");
+		m_legend.m_font.loadFromFile("NotoSans.ttf");
+
+		LogFnEnd();
+	}
 }

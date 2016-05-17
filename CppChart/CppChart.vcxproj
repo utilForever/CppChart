@@ -126,6 +126,7 @@
     <ClCompile Include="Log.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bar.h" />
     <ClInclude Include="Chart.h" />
     <ClInclude Include="ChartUtil.h" />
     <ClInclude Include="DataFormat.h" />

@@ -49,7 +49,13 @@ Various chart creation library using Modern C++.
 
 ## Screenshots
 
-Coming soon!
+### Bar Graph
+
+<img src="https://github.com/utilForever/CppChart/blob/master/Screenshots/BarGraph.PNG"/>
+
+## Code Map
+
+<img src="https://github.com/utilForever/CppChart/blob/master/Screenshots/CodeMap.PNG"/>
 
 ## Dependencies
 

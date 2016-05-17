@@ -118,6 +118,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bar.cpp" />
     <ClCompile Include="Chart.cpp" />
     <ClCompile Include="ChartTest.cpp" />
     <ClCompile Include="ChartUtil.cpp" />

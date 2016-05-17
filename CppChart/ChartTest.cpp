@@ -60,7 +60,7 @@ void DrawOnScreen(CppChart::Chart* graph)
 void ChartTest()
 {
 	char option;
-	CppChart::Chart* graph = nullptr;
+	CppChart::Chart* graph;
 
 	do
 	{
@@ -90,7 +90,6 @@ void ChartTest()
 		std::cin.get();
 
 		delete graph;
-		graph = nullptr;
 
 		// Clear Screen
 		for (int i = 0; i < 1000; ++i)

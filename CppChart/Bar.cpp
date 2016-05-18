@@ -3,6 +3,7 @@
 
 #include "Bar.h"
 #include "ChartUtil.h"
+#include <cassert>
 
 namespace CppChart
 {
@@ -97,6 +98,28 @@ namespace CppChart
 		}
 
 		DrawAxes();
+
+		LogFnEnd();
+	}
+
+	MultiBarChart::MultiBarChart(const std::vector<std::vector<float>>& md, const std::vector<std::string>& al, const std::vector<sf::Color>& bc)
+		: m_gap(0.0f), m_guides(0), m_displayGuides(false), m_displayValues(true), m_multiData(md), m_axesLabels(al), m_barColors(bc), m_width(0.0f), m_vSize(0.0f)
+	{
+		LogFnStart();
+
+		assert(md.size() == al.size());
+		assert(md[0].size() == bc.size());
+
+		float temp = 0.0f;
+		m_max = *(max_element(md[0].begin(), md[0].end()));
+
+		for (int i = 1; i < al.size(); ++i)
+		{
+			if (temp > m_max)
+			{
+				m_max = temp;
+			}
+		}
 
 		LogFnEnd();
 	}

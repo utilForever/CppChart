@@ -123,4 +123,66 @@ namespace CppChart
 
 		LogFnEnd();
 	}
+
+	void MultiBarChart::Render()
+	{
+		LogFnStart();
+
+		float x = m_chartOffsets.x / 2.0f, y = m_chartOffsets.y / 2.0f;
+		float ratio = (m_chartHeight - 2.0f * m_chartOffsets.y) / m_max;
+		float item;
+
+		sf::RectangleShape bar;
+		sf::Text text, values;
+
+		m_width = (m_chartWidth - 2.0f * m_chartOffsets.x) / static_cast<float>((m_multiData[0].size() + 1u) * m_multiData.size());
+		m_gap = m_width;
+		m_vSize = m_width / static_cast<float>(CountDigit(m_max));
+
+		if (m_displayValues)
+		{
+			values.setFont(m_axes.labels.font);
+			values.setCharacterSize(m_vSize);
+		}
+
+		text.setFont(m_axes.labels.font);
+		text.setColor(m_axes.labels.fontColor);
+		text.setCharacterSize(m_axes.labels.fontSize);
+
+		for (int i = 0; i < m_multiData.size(); ++i)
+		{
+			x += m_gap;
+			text.setString(m_axesLabels[i]);
+			SetTextAtCenter(text, x, m_chartHeight - y - 1.2f * m_axes.labels.fontSize, m_width + m_gap, m_axes.labels.fontSize);
+			m_chartTexture.draw(text);
+
+			for (int j = 0; j < m_multiData[i].size(); ++j)
+			{
+				item = m_multiData[i][j] * ratio;
+				bar.setPosition(x, m_chartHeight - y - item + m_vSize);
+				bar.setSize(sf::Vector2f(m_width, item - m_axes.labels.fontSize - m_vSize));
+				bar.setFillColor(m_barColors[j]);
+				m_chartTexture.draw(bar);
+
+				if (m_displayValues)
+				{
+					values.setString([&]()
+					{
+						std::ostringstream oss;
+						oss << std::setprecision(2) << m_multiData[i][j];
+						return oss.str();
+					}());
+					values.setColor(m_barColors[j]);
+					SetTextAtCenter(values, x, m_chartHeight - y - item - m_vSize / 2.0f, m_width, m_vSize);
+					m_chartTexture.draw(values);
+				}
+
+				x += m_width;
+			}
+		}
+
+		DrawAxes();
+
+		LogFnEnd();
+	}
 }

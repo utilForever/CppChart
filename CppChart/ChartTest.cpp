@@ -66,7 +66,8 @@ void ChartTest()
 	{
 		std::cout << "Which graph do you want to see ?\n";
 		std::cout << "1. Bar Graph\n";
-		std::cout << "Enter your option [1-1] : ";
+		std::cout << "2. Multi Bar Graph\n";
+		std::cout << "Enter your option [1-2] : ";
 		std::cin >> option;
 
 		switch (option)
@@ -80,7 +81,13 @@ void ChartTest()
 				CppChart::DataElement{ "DDD", sf::Color(150, 111, 214), 12 }
 			}, false);
 			break;
-
+		case '2':
+			graph = new CppChart::MultiBarChart(
+			{ {20, 20}, {35, 56}, {12, 17}, {23, 29} },
+			{ "AAA", "BBB", "CCC", "DDD" },
+			{ sf::Color(50, 200, 50), sf::Color(50, 50, 200) });
+			graph->m_legend.AddData({ {"AAA", sf::Color(50, 200, 50)}, {"BBB", sf::Color(50, 50, 200)} });
+			break;
 		default:
 			return;
 		}

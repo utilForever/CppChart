@@ -93,11 +93,11 @@ namespace CppChart
 				{
 					e.m_shape->setPosition(sf::Vector2f(lx, ly));
 					ly += m_shape.height;
-					SetTextAtCenter(e.m_text, lx, ly, m_shape.width, m_shape.height);
+					SetTextAtCenter(e.m_text, lx, ly, m_shape.width, m_fontSize);
 				}
 				else
 				{
-					SetTextAtCenter(e.m_text, lx, ly, m_shape.width, m_shape.height);
+					SetTextAtCenter(e.m_text, lx, ly, m_shape.width, m_fontSize);
 					ly += m_fontSize;
 					e.m_shape->setPosition(sf::Vector2f(lx, ly));
 				}
@@ -110,6 +110,9 @@ namespace CppChart
 		default:
 			throw std::exception("This is never allowed to happen.");
 		}
+
+		m_texture.setSmooth(true);
+		m_texture.display();
 
 		LogFnEnd();
 	}

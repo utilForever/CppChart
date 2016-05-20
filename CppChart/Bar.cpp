@@ -110,11 +110,12 @@ namespace CppChart
 		assert(md.size() == al.size());
 		assert(md[0].size() == bc.size());
 
-		float temp = 0.0f;
+		float temp;
 		m_max = *(max_element(md[0].begin(), md[0].end()));
 
 		for (int i = 1; i < al.size(); ++i)
 		{
+			temp = (*max_element(md[i].begin(), md[i].end()));
 			if (temp > m_max)
 			{
 				m_max = temp;

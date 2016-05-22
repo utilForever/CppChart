@@ -19,9 +19,9 @@ Various chart creation library using Modern C++.
 #### Part 3
 
 * Implement various chart classes.
-  * Bar graph
-  * Multi-bar graph
-  * Histogram
+  * Bar graph (Done)
+  * Multi-bar graph (Done)
+  * Histogram (Doing...)
   * Line graph
   * Multi-line graph
   * Pie chart

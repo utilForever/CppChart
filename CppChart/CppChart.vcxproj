@@ -137,6 +137,7 @@
     <ClInclude Include="DataFormat.h" />
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="GraphLegend.h" />
+    <ClInclude Include="Histogram.h" />
     <ClInclude Include="Log.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

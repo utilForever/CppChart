@@ -59,5 +59,8 @@
     <ClInclude Include="Bar.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Histogram.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

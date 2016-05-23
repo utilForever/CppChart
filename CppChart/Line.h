@@ -19,6 +19,22 @@ namespace CppChart
 		bool m_displayGuides;
 		bool m_displayValues;
 		bool m_fill;
+
+	protected:
+		void DrawAxisAnchors(float, float);
+		void DrawValueAnchor(float, float, const sf::Color&);
+		void DrawAxisGuides(float, float);
+		void DrawFillPolygon(float, float);
+
+		sf::CircleShape m_anchor;
+
+		std::vector<DataElement> m_data;
+
+		float m_gap, m_startPos;
+		float m_max;
+
+		bool m_hGuide, m_vGuide;
+		bool m_xAxisGuide, m_yAxisGuide;
 	};
 }
 

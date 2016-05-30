@@ -13,7 +13,22 @@ namespace CppChart
 		m_gap(0.0f), m_startPos(0.0f), m_max(0.0f),
 		m_hGuide(true), m_vGuide(true), m_xAxisGuide(true), m_yAxisGuide(true)
 	{
-		
+		LogFnStart();
+
+		m_max = (*max_element(d.begin(), d.end())).value;
+		m_anchor.setRadius(m_anchorSize);
+		m_anchor.setFillColor(m_anchorColor);
+
+		std::vector<DataFormat> temp;
+		for (auto data : d)
+		{
+			temp.push_back({ data.name, data.color });
+		}
+
+		m_legend.AddData(temp);
+		m_axes.labels.fontSize = 10;
+
+		LogFnEnd();
 	}
 
 	void LineChart::Render()

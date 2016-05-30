@@ -166,5 +166,37 @@ namespace CppChart
 		LogFnEnd();
 	}
 
-	void DrawFillPolygon(float, float);
+	void LineChart::DrawFillPolygon(float ratio, float gap)
+	{
+		LogFnStart();
+
+		if (m_fill)
+		{
+			sf::Vector2f point;
+			sf::ConvexShape fillShape;
+			
+			float item;
+			float x = m_chartOffsets.x / 2.0f, y = m_chartOffsets.y / 2.0f;
+			unsigned int i = 0u;
+
+			fillShape.setPointCount(2u + m_data.size());
+			fillShape.setPoint(0, sf::Vector2f(0, m_chartHeight - m_axes.labels.fontSize));
+
+			for (; i < m_data.size(); ++i)
+			{
+				item = m_data[i].value * ratio;
+				point = sf::Vector2f(x, m_chartHeight - y - item);
+				fillShape.setPoint(i + 1u, point);
+				// TODO: Log Function Improvement
+				// Log("Polygon : ", point);
+				x += m_gap;
+			}
+
+			fillShape.setPoint(i + 1u, sf::Vector2f(x - m_gap, m_chartHeight - m_axes.labels.fontSize));
+			fillShape.setFillColor(m_fillColor);
+			m_chartTexture.draw(fillShape);
+		}
+
+		LogFnEnd();
+	}
 }

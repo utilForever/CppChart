@@ -1,3 +1,6 @@
+#include <sstream>
+#include <iomanip>
+
 #include "Line.h"
 
 namespace CppChart
@@ -11,5 +14,103 @@ namespace CppChart
 		m_hGuide(true), m_vGuide(true), m_xAxisGuide(true), m_yAxisGuide(true)
 	{
 		
+	}
+
+	void LineChart::Render()
+	{
+		LogFnStart();
+
+		float x = m_chartOffsets.x / 2.0f, y = m_chartOffsets.y / 2.0f;
+		float ratio = (m_chartHeight - m_chartOffsets.y - m_anchorSize - 1.2f * m_axes.labels.fontSize) / m_max;
+		float item;
+
+		m_gap = (m_chartWidth - m_chartOffsets.x) / m_data.size();
+		
+		float width = (m_chartWidth - 2.0f * m_chartOffsets.x - m_gap * static_cast<float>(m_data.size())) / static_cast<float>(m_data.size());
+
+		sf::RectangleShape line;
+		sf::Vector2f first, second;
+		sf::Text text, values;
+
+		m_fill = true;
+
+		if (!m_legend.m_exists)
+		{
+			text.setFont(m_axes.labels.font);
+			text.setColor(m_axes.labels.fontColor);
+			text.setCharacterSize(m_axes.labels.fontSize);
+		}
+
+		if (m_displayValues)
+		{
+			values.setFont(m_axes.labels.font);
+			values.setCharacterSize(m_axes.labels.fontSize);
+		}
+
+		DrawFillPolygon(ratio, m_gap);
+
+		bool isGuide = true;
+		for (auto data : m_data)
+		{
+			item = data.value * ratio;
+			second = sf::Vector2f(x, m_chartHeight - y - item);
+			// TODO: Log Function Improvement
+			// Log("Line : ", second);
+			line = MakeRect(first, second, m_lineThickness);
+			line.setFillColor(m_lineColor);
+			m_chartTexture.draw(line);
+			first = second;
+
+			if (!m_legend.m_exists)
+			{
+				text.setString(data.name);
+				SetTextAtCenter(text, x, m_chartHeight - y - 1.2f * m_axes.labels.fontSize, width + m_gap, m_axes.labels.fontSize);
+				text.move(sf::Vector2f(-m_gap / 2.0f, 0.0f));
+				m_chartTexture.draw(text);
+			}
+
+			if (m_displayValues)
+			{
+				values.setColor(data.color);
+				values.setString([&]()
+				{
+					std::ostringstream oss;
+					oss << std::setprecision(2) << data.value;
+					return oss.str();
+				}());
+				SetTextAtCenter(values, x, m_chartHeight - y - item - m_axes.labels.fontSize / 2.0f, width + m_gap, m_axes.labels.fontSize);
+				values.move(sf::Vector2f(-m_gap / 2.0f, -m_anchorSize - m_axes.labels.fontSize));
+
+				if (isGuide)
+				{
+					values.move(sf::Vector2f(values.getString().getSize() * m_axes.labels.fontSize / 2.0f, 0.0f));
+				}
+
+				m_chartTexture.draw(values);
+			}
+
+			if (isGuide)
+			{
+				DrawAxisGuides(first.x, first.y);
+				isGuide = false;
+			}
+
+			DrawAxisAnchors(first.x, first.y);
+
+			x += m_gap;
+		}
+
+		x = m_chartOffsets.x / 2.0f;
+		
+		for (auto& data : m_data)
+		{
+			item = data.value * ratio;
+			DrawValueAnchor(x, m_chartHeight - y - item, data.color);
+			x += m_gap;
+		}
+
+		DrawAxes();
+
+		LogFnEnd();
 	}
 }

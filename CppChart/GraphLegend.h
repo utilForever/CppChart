@@ -54,7 +54,7 @@ namespace CppChart
 	{
 	public:
 		GraphLegend() :
-			m_orientation(Orientation::UNKNOWN), m_beforeText(true), m_textMatchesKeyColor(true), m_exists(true),
+			m_orientation(Orientation::UNKNOWN), m_beforeText(true), m_textMatchesKeyColor(true), m_exists(false),
 			m_width(0), m_height(0), m_x(0), m_y(0), m_position(Position::UNKNOWN),
 			m_keyShape(Shape::UNKNOWN), m_bgColor(sf::Color::White), m_fontColor(sf::Color::Black), m_fontSize(0) { }
 

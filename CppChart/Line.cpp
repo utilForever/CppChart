@@ -189,10 +189,10 @@ namespace CppChart
 				fillShape.setPoint(i + 1u, point);
 				// TODO: Log Function Improvement
 				// Log("Polygon : ", point);
-				x += m_gap;
+				x += gap;
 			}
 
-			fillShape.setPoint(i + 1u, sf::Vector2f(x - m_gap, m_chartHeight - m_axes.labels.fontSize));
+			fillShape.setPoint(i + 1u, sf::Vector2f(x - gap, m_chartHeight - m_axes.labels.fontSize));
 			fillShape.setFillColor(m_fillColor);
 			m_chartTexture.draw(fillShape);
 		}

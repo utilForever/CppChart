@@ -2,6 +2,7 @@
 
 #include "Chart.h"
 #include "Bar.h"
+#include "Line.h"
 
 void DrawOnScreen(CppChart::Chart*);
 void ChartTest();
@@ -67,7 +68,8 @@ void ChartTest()
 		std::cout << "Which graph do you want to see ?\n";
 		std::cout << "1. Bar Graph\n";
 		std::cout << "2. Multi Bar Graph\n";
-		std::cout << "Enter your option [1-2] : ";
+		std::cout << "3. Line Chart\n";
+		std::cout << "Enter your option [1-3] : ";
 		std::cin >> option;
 
 		switch (option)
@@ -87,6 +89,17 @@ void ChartTest()
 			{ "AAA", "BBB", "CCC", "DDD" },
 			{ sf::Color(50, 200, 50), sf::Color(50, 50, 200) });
 			graph->m_legend.AddData({ {"AAA", sf::Color(50, 200, 50)}, {"BBB", sf::Color(50, 50, 200)} });
+			break;
+		case '3':
+			graph = new CppChart::LineChart
+			({
+				CppChart::DataElement{ "AAA", sf::Color(255, 105, 97), 23 },
+				CppChart::DataElement{ "BBB", sf::Color(255, 179, 71), 14 },
+				CppChart::DataElement{ "CCC", sf::Color(119, 190, 119), 33 },
+				CppChart::DataElement{ "DDD", sf::Color(150, 111, 214), 12 },
+				CppChart::DataElement{ "EEE", sf::Color(250, 111, 214), 28 },
+				CppChart::DataElement{ "FFF", sf::Color(150, 111, 114), 7 }
+			});
 			break;
 		default:
 			return;

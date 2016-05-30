@@ -147,6 +147,24 @@ namespace CppChart
 		LogFnEnd();
 	}
 	
-	void DrawAxisGuides(float, float);
+	void LineChart::DrawAxisGuides(float x, float y)
+	{
+		LogFnStart();
+
+		if (m_vGuide)
+		{
+			DrawDottedLine(&m_chartTexture, sf::Vector2f(x, y),
+				sf::Vector2f(x, m_chartHeight - m_chartOffsets.y / 2.0f - m_axes.labels.fontSize), m_guideColor);
+		}
+
+		if (m_hGuide)
+		{
+			DrawDottedLine(&m_chartTexture, sf::Vector2f(m_chartOffsets.x / 2.0f, y),
+				sf::Vector2f(x, y), m_guideColor);
+		}
+
+		LogFnEnd();
+	}
+
 	void DrawFillPolygon(float, float);
 }

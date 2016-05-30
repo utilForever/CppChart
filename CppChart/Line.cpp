@@ -113,4 +113,29 @@ namespace CppChart
 
 		LogFnEnd();
 	}
+
+	void LineChart::DrawAxisAnchors(float x, float y)
+	{
+		LogFnStart();
+
+		if (m_yAxisGuide)
+		{
+			m_anchor.setPosition(sf::Vector2f(m_chartOffsets.x / 2.0f - m_anchorSize / 2.0f, y - m_anchorSize / 2.0f));
+			m_anchor.setRadius(m_anchorSize / 2.0f);
+			m_chartTexture.draw(m_anchor);
+		}
+
+		if (m_xAxisGuide)
+		{
+			m_anchor.setPosition(sf::Vector2f(x - m_anchorSize / 2.0f, m_chartHeight - m_chartOffsets.y / 2.0f - m_anchorSize / 2.0f - m_axes.labels.fontSize));
+			m_anchor.setRadius(m_anchorSize / 2.0f);
+			m_chartTexture.draw(m_anchor);
+		}
+
+		LogFnEnd();
+	}
+
+	void DrawValueAnchor(float, float, const sf::Color&);
+	void DrawAxisGuides(float, float);
+	void DrawFillPolygon(float, float);
 }
